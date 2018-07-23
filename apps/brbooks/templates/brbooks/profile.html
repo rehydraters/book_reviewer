@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8"/>
+    <title>User</title>
+    <style>
+      .header .left { display:inline; text-align:left; font-size: 22px; }
+      .header .right { float:right; }
+      .header a { margin-left: 10px; }
+      .bull { list-style-type: none; }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <span class="right"><a href="/books">Home</a>
+        <span class="right"><a href="/books/add">Add Book and Review</a>
+        <a href="/books/logout">Logout</a></span>
+    </div>
+    <div class="main">
+        <table>
+            <tr>
+                <td><h3>User Alias:</h3></td>
+                <td><h3>{{ user.alias }}</h3></td>
+            </tr>
+            <tr>
+                <td>Name:</td>
+                <td>{{ user.name }}</td>
+            </tr>
+            <tr>
+                <td>Email:</td>
+                <td>{{ user.email }}</td>
+            </tr>
+            <tr>
+                <td>Total Reviews:</td>
+                <td>{{ user.reviews_user.count }}</td>
+            </tr>
+        </table>
+        {% if user.reviews_user %}
+        <h4>Posted Reviews on the following books:</h4>
+        {% for review in user.reviews_user.all %}
+            <ul>
+                <li class="bull"><a href="/books/{{ review.book.id }}">{{ review.book.title }}</a></li>
+            </ul>
+        {% endfor %}
+        {% endif %}
+    </div>
+</body>
+</html>

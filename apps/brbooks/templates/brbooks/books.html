@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8"/>
+    <title>Books</title>
+    <style>
+      .header .left { display:inline; text-align:left; font-size: 22px; }
+      .header .right { float:right; }
+      .header a { margin-left: 10px; }
+      .main { width: 500px; display: inline-block }
+      .side { width: 300px; display: inline-block; vertical-align: top }
+      .bull { list-style-type: none; }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <span class="left">Welcome {{ user.name }}</span>
+        <span class="right"><a href="/books/add">Add Book and Review</a>
+        <a href="/books/logout">Logout</a></span>
+    </div>
+    <div class="main">
+        <h3>Recent Book Reviews:</h3>
+        {% for recent in recent_reviews %}
+        <p><a href="/books/{{ recent.book.id }}">{{ recent.book.title }}</a></p>
+        <ul>
+        <li class="bull"><p>Rating:
+                {% for i in "12345" %}
+                    {% if forloop.counter > recent.rating %}
+                        &nbsp;
+                    {% else %}
+                        ☆
+                    {% endif %}
+                {% endfor %}</p></li>
+        <li class="bull"><p><a href="/books/user/{{ recent.reviewer.id }}">{{ recent.reviewer.alias }}</a> says {{ recent.review }}</p></li>
+        <li class="bull"><p>Posted on {{ recent.created_at }}</p></li>
+        </ul>
+        {% endfor %}
+        <p></p>
+    </div>
+    <div class="side">
+        <h3>Other Books with Reviews:</h3>
+        <div style="height:150px;width:200px;border:1px solid black;overflow:auto;">
+        {% for review in other_reviews %}
+            <p><a href="/books/{{ review.book.id }}">{{ review.book.title }}</a></p>
+        {% endfor %}
+        </div>
+    </div>
+</body>
+</html>

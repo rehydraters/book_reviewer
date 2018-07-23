@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8"/>
+    <title>Show Book and Add Review</title>
+    <style>
+      .header .left { display:inline; text-align:left; font-size: 22px; }
+      .header .right { float:right; }
+      .header a { margin-left: 10px; }
+      .main .right { float:right; }
+      .main { width: 500px; display: inline-block }
+      .side { width: 300px; display: inline-block; vertical-align: top }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <span class="right"><a href="/books">Home</a>
+        <a href="/books/logout">Logout</a></span>
+    </div>
+    <div class="main">
+        <h3>{{ book.title }}</h3>
+        <h4>Author: {{ book.author.writer }}</h4>
+        <h3>Reviews</h3>
+        <hr>
+        {% for bookreview in book.reviews.all %}
+            <p>Rating:
+                {% for i in "12345" %}
+                    {% if forloop.counter > bookreview.rating %}
+                        &nbsp;
+                    {% else %}
+                        ☆
+                    {% endif %}
+                {% endfor %}</p>
+            <p><a href="user/{{ bookreview.reviewer.id }}">{{ bookreview.reviewer.name }}</a> says: {{ bookreview.review }}</p>
+            <p>Posted on {{ bookreview.created_at }}
+                {% if bookreview.reviewer.id == request.session.logged_in %}
+                    <span class="right"><a href="delete/{{ bookreview.id }}">Delete this Review</a></span>
+                {% endif %}
+            </p>
+        <hr>
+        {% endfor %}
+    </div>
+    <div class="side">
+        <p>Add a review:</p>
+        <form action="adding_review" method='post'>
+        {% csrf_token %}
+            <input type="hidden" name="book" value="{{ book.id }}">
+            <input type="hidden" name="user" value="{{ request.session.id }}">
+            <label for="adding_review"></label><textarea name="adding_review"></textarea>
+            <label for="rating">Rating:<select name="rating">
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option></select>stars</label>
+            <input type="submit" name="submit" value="Submit Review">
+            </form>
+    </div>
+</body>
+</html>
