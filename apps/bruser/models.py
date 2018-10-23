@@ -17,7 +17,7 @@ class UserManager(models.Manager):
             errors['pword_length'] = "Password must be at least 8 characters long"
         if postData['pword'] != postData['pwconf']:
             errors['pwconf'] = "Passwords must match"
-        return error
+        return errors
 
         # if User.objects.filter(email = postData['email']):
         #   errors['email_present'] = "There is an account already with that email address."
