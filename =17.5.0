@@ -1,0 +1,16 @@
+Collecting pyopenssl
+  Downloading https://files.pythonhosted.org/packages/96/af/9d29e6bd40823061aea2e0574ccb2fcf72bfd6130ce53d32773ec375458c/pyOpenSSL-18.0.0-py2.py3-none-any.whl (53kB)
+Requirement already satisfied: six>=1.5.2 in /Users/thomascompton/DojoAssignments/python_stack/myEnvironments/djangoEnv/lib/python2.7/site-packages (from pyopenssl) (1.11.0)
+Collecting cryptography>=2.2.1 (from pyopenssl)
+  Downloading https://files.pythonhosted.org/packages/5d/b1/9863611b121ee524135bc0068533e6d238cc837337170e722224fe940e2d/cryptography-2.3.1-cp27-cp27m-macosx_10_6_intel.whl (1.5MB)
+Requirement already satisfied: cffi!=1.11.3,>=1.7 in /Users/thomascompton/DojoAssignments/python_stack/myEnvironments/djangoEnv/lib/python2.7/site-packages (from cryptography>=2.2.1->pyopenssl) (1.11.5)
+Requirement already satisfied: enum34; python_version < "3" in /Users/thomascompton/DojoAssignments/python_stack/myEnvironments/djangoEnv/lib/python2.7/site-packages (from cryptography>=2.2.1->pyopenssl) (1.1.6)
+Collecting idna>=2.1 (from cryptography>=2.2.1->pyopenssl)
+  Downloading https://files.pythonhosted.org/packages/4b/2a/0276479a4b3caeb8a8c1af2f8e4355746a97fab05a372e4a2c6a6b876165/idna-2.7-py2.py3-none-any.whl (58kB)
+Collecting asn1crypto>=0.21.0 (from cryptography>=2.2.1->pyopenssl)
+  Downloading https://files.pythonhosted.org/packages/ea/cd/35485615f45f30a510576f1a56d1e0a7ad7bd8ab5ed7cdc600ef7cd06222/asn1crypto-0.24.0-py2.py3-none-any.whl (101kB)
+Collecting ipaddress; python_version < "3" (from cryptography>=2.2.1->pyopenssl)
+  Downloading https://files.pythonhosted.org/packages/fc/d0/7fc3a811e011d4b388be48a0e381db8d990042df54aa4ef4599a31d39853/ipaddress-1.0.22-py2.py3-none-any.whl
+Requirement already satisfied: pycparser in /Users/thomascompton/DojoAssignments/python_stack/myEnvironments/djangoEnv/lib/python2.7/site-packages (from cffi!=1.11.3,>=1.7->cryptography>=2.2.1->pyopenssl) (2.18)
+Installing collected packages: idna, asn1crypto, ipaddress, cryptography, pyopenssl
+Successfully installed asn1crypto-0.24.0 cryptography-2.3.1 idna-2.7 ipaddress-1.0.22 pyopenssl-18.0.0
